@@ -1,0 +1,143 @@
+:root{
+    --primary-color:#ec1f55;
+    --text-color:#333;
+}
+p{
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+body{
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    background-color: #f5f5f5;
+}
+.main-content{
+    padding: 10px;
+    width: 33%;
+    margin: 50px auto 0;
+    
+    box-shadow: 0px 0px 13px 7px rgba(0,0,0,0.1);
+    border-radius: 5px;
+}
+.active{
+    color:#ec1f55
+}
+/* dashboard */
+.dashboard{
+    background-color: white;
+}
+.dashboard .heading{
+    text-align: center;
+    margin: 0 auto;
+    width: 30%;
+    
+}
+.dashboard .heading .title{
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 10px;
+}
+.dashboard .heading .song-name-playing{
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-color);
+}
+/* cd */
+.cd{
+    width: 40%;
+    margin: auto;
+}
+.cd-thumb{
+    width: 100%;
+    height:170px;
+    border-radius: 50%;
+    object-fit: cover;
+
+}
+/* control */
+.control{
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    color:var(--text-color);
+}
+.control .btn{
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+}
+.control .btn i{
+    font-size: 25px;
+}
+.control .btn-play{
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 50%;
+}
+.progress{
+    
+    width: 100%;
+  -webkit-appearance: none;
+  height: 6px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+.progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 6px;
+    background-color: var(--primary-color);
+    cursor: pointer;
+  }  /* Playlist */
+.playlist{
+    /* border: 5px solid rgb(224, 221, 221); */
+    margin-top: 20px;
+    overflow: auto;
+    height: 200px;
+    background-color: #d3d3d3;
+}
+/* width */
+.playlist::-webkit-scrollbar {
+    width: 0px;
+}
+
+.song{
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: #f5f5f5; */
+}
+.body{
+    width: 70%;
+}
+.body .author{
+    font-weight: 600;
+    color: var(--text-color);
+    font-size: 20px;
+}
+.body .song-name{
+    font-size: 13px;
+    /* font-weight: 500; */
+    color: var(--text-color);;
+}
+.song{
+    padding: 8px;
+    margin: 5px 0;
+    background-color: #f5f5f5
+}
+.song .thumb{
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-size: cover;
+    margin: 0 8px;
+}
