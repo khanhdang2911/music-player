@@ -5,8 +5,8 @@ const $$=document.querySelectorAll.bind(document);
 let btnPlay=$(".btn-play");
 let btnNext=$(".btn-next");
 let btnPrev=$(".btn-prev"); 
-
-
+let btnRepeat=$(".btn-repeat");
+let btnRandom=$(".btn-random");
 let songNameHeading=$(".song-name-playing");
 let cdThumb=$(".cd-thumb");
 let audio=$("audio");
@@ -14,6 +14,8 @@ let progress=$(".progress");
 
 const app={
     isPlaying:false,
+    isRandom:false,
+    isRepeat:false,
     songs:[
         {
             name:"天下无双",
@@ -101,6 +103,60 @@ const app={
             progress.value=0;
             audio.play();
         }
+        console.log([btnRepeat]);
+        // Khi click vao repeat
+        btnRepeat.onclick=function()
+        {
+            if(app.isRepeat==false)
+            {
+                btnRepeat.querySelector("i").classList.add("color-active");
+                app.isRepeat=true;
+            }
+            else{
+                app.isRepeat=false;
+                btnRepeat.querySelector("i").classList.remove("color-active");
+            }
+        }
+        // Khi het bai
+        audio.onended=function()
+        {
+            // Neu repeat
+            if(app.isRepeat==true)
+            {
+                app.loadCurrentSong();
+                audio.play();
+            }
+            else{
+                app.nextSong();
+                app.loadCurrentSong();
+                audio.play();
+            }
+            // neu random
+            if(app.isRandom==true)
+            {
+                let randomNumber=app.currentIndex;
+                while(randomNumber==app.currentIndex)
+                {
+                    randomNumber=Math.floor((Math.random()*(app.songs.length-1)));
+                }
+                app.currentIndex=randomNumber;
+                app.loadCurrentSong();
+                audio.play();
+            }
+        }
+        // Random bai
+        btnRandom.onclick=function()
+        {
+            if(app.isRandom==false)
+            {
+                app.isRandom=true;
+                btnRandom.querySelector("i").classList.add("color-active");
+            }
+            else{
+                app.isRandom=false;
+                btnRandom.querySelector("i").classList.remove("color-active");
+            }
+        }
         //Chuyen bai
         for(var item of $$(".song"))
         {
@@ -130,6 +186,17 @@ const app={
             
         songNameHeading.innerHTML=`${app.currentSong.name}`
         cdThumb.src=app.currentSong.image;
+        for(var item of $$(".song"))
+        {
+            console.log(item.dataset.id+" va "+app.currentIndex);
+            if(item.dataset.id==app.currentIndex)
+            {
+                item.classList.add("active");
+            }
+            else{
+                item.classList.remove("active");
+            }
+        }
     },
     nextSong:function(){
         this.currentIndex++;

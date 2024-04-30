@@ -148,3 +148,6 @@ audio{
     background-color:var(--primary-color);
     color: #fff;
 }
+.color-active{
+    color:var(--primary-color);
+}
